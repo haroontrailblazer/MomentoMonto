@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import re
 import os
 
 # Page Configuration
@@ -9,7 +10,7 @@ st.set_page_config(
     layout="centered"
     )
  
-# --- SEO META TAGS ---
+# SEO META TAGS
 st.markdown("""
 <head>
   <title>MomentoMonto - Monitor Your Servers</title>
@@ -19,8 +20,19 @@ st.markdown("""
 </head>
 """, unsafe_allow_html=True)
 
-url_req = st.text_input(label="URL",label_visibility="hidden",placeholder="Enter your Website-URL")
+# getting the Website URL
+url_req = st.text_input(label="URL",label_visibility="hidden",placeholder="Enter your Website-URL or IP-Address")
+if not url_req:
+  st.stop()
 
-response = requests.get(url=url_req)
-st.info(response)
-print(response)
+# URL or IP Input Filter
+unnessary = r"https://"
+if re.match(unnessary, url_req):
+  print("")
+else:
+  url_req = "https://"+url_req
+  
+
+# Checking the response from the Website
+response = requests.get(url=url_req, timeout=5)
+code_verify = response.status_code
