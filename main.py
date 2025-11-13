@@ -81,31 +81,21 @@ while True:
         res = requests.get(url=url_req, timeout=5)
         end_time = time.time()
 
-        response_time = round((end_time - start_time) * 1000, 2)  # in milliseconds
+        response_time = round((end_time - start_time) * 1000, 2)
         response_times.append(response_time)
         timestamps.append(datetime.now().strftime("%H:%M:%S"))
 
-        if len(response_times) > 15:  # keep chart clean with last 15 readings
+        if len(response_times) > 400:
             response_times.pop(0)
             timestamps.pop(0)
-
+        
         if res.status_code == 200:
             color = "#00FFFF"
             text = "Server Active"
-        if response_time < 100:
-          progress_value = 100
-        elif response_time < 200:
-          progress_value = 75
-        elif response_time < 300:
-          progress_value = 50
-        elif response_time >= 500:
-          progress_value = 25
-          
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
-            progress_value = 0
-
+          
     except Exception:
         color = "#FF0000"
         text = "Server Down"
@@ -113,6 +103,8 @@ while True:
         response_time = 0
         response_times.append(0)
         timestamps.append(datetime.now().strftime("%H:%M:%S"))
+        
+        
 
     # --- Status Light ---
     status_html = f"""
@@ -130,9 +122,21 @@ while True:
     </div>
     """
     status_placeholder.markdown(status_html, unsafe_allow_html=True)
+    
+    
 
     # --- Progress Bar ---
+    if response_time < 100:
+        progress_value = 100
+    elif response_time < 200:
+        progress_value = 75
+    elif response_time < 300:
+        progress_value = 50
+    elif response_time >= 500:
+        progress_value = 25
     bar_placeholder.progress(progress_value)
+
+
 
     # --- Response Time Display ---
     response_placeholder.markdown(
@@ -141,24 +145,21 @@ while True:
     )
     st.markdown("<br></br>",unsafe_allow_html=True)
     
-    # --- Response Time Line Chart (X: Hourly labels, Y: 0–5 MB) ---
+    
+    
+    # --- Response Time Line Chart (X: Hourly labels, Y: 0–5 sec) ---
     mp.close("all")
     mp.style.use("dark_background")
     fig, ax = mp.subplots(figsize=(6, 3))
-
-    # Convert milliseconds to MB scale (demo scale: assuming 1 ms ≈ 0.001 MB)
     mb_values = [round(rt * 0.01, 2) for rt in response_times]
-
     ax.plot(timestamps, mb_values, color="#00FFFF", marker="o", linewidth=2)
     ax.set_xlabel("Time", fontsize=10, color="grey")
     ax.set_ylabel("Traffic(Sec)", fontsize=10, color="grey")
     ax.grid(alpha=0.3)
-
-    # Format x-ticks → show only full hour marks (e.g., 10:00:00, 11:00:00)
     hour_labels, hour_positions = [], []
     for i, t in enumerate(timestamps):
         if t.endswith(":00:00"):
-            hour_labels.append(t[:5])  # show only HH:MM
+            hour_labels.append(t[:5])
             hour_positions.append(i)
 
     if hour_labels:
