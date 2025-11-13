@@ -146,7 +146,7 @@ while True:
     fig, ax = mp.subplots(figsize=(6, 3))
 
     # Convert milliseconds to MB scale (demo scale: assuming 1 ms ≈ 0.001 MB)
-    mb_values = [round(rt * 0.001, 3) for rt in response_times]
+    mb_values = [round(rt * 0.1, 2) for rt in response_times]
 
     ax.plot(timestamps, mb_values, color="#00FFFF", marker="o", linewidth=2)
     ax.set_xlabel("Time", fontsize=10, color="grey")
