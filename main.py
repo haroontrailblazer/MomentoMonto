@@ -31,7 +31,7 @@ st.markdown("""
 # Title
 st.markdown("""
     <h2 style='text-align:left; color:#00FFFF;'>MomentoMonto</h2>
-    <p style='text-align:left; color:grey; font-size:11px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
+    <p style='text-align:left; color:grey; font-size:14px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
 
 # --- Input Section ---
 url_req = st.text_input(label="URL", label_visibility="hidden", placeholder="Enter your Website-URL or IP-Address")
