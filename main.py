@@ -29,7 +29,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 # Title
 st.markdown("""
-    <h2 style='text-align:left; color:#00FFFF; text-shadow:0 0 10px #00FFFF;'>MomentoMonto</h2>
+    <h2 style='text-align:left; color:#00FFFF;'>MomentoMonto</h2>
     <p style='text-align:left; color:grey; font-size:11px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
 
 # --- Input Section ---
