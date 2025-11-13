@@ -51,7 +51,7 @@ if not url_req:
         <hr style="border:none;border-top:1px solid #e6e6e6;margin:12px 0;">
         <p style="margin:8px 0 0;color:#555;font-size:13px;line-height:1.4;text-align:left;">
             <strong>About:</strong><br>
-            StrengthX is a free, open-source password strength checker designed to help you create stronger passwords and enhance your online security Integrated with AI-Password Generator "StrengthX-Dildo:V1".
+           MomentoMonto is an intelligent server monitoring and response time analysis tool designed to track, analyze, and visualize the performance of web servers in real-time. It helps developers, system administrators, and network engineers ensure high availability, stability, and speed of their online services.
         </p>
     </div>
     <br>
@@ -177,3 +177,24 @@ while True:
     except:
         stat_placeholder.write("Code Error")
     time.sleep(timeout)
+
+    
+    # --- Footer ---
+    st.markdown("""
+    <div class="footer" style="background-color:black;color:#333;padding:18px;border-radius:12px;max-width:820px;margin:20px auto;text-align:center;font-family:Segoe UI, Tahoma, sans-serif;">
+        <p style="margin:0 0 8px;font-size:14px;">
+            <strong>Contact:</strong>
+            <a href="mailto:hexra2025@gmail.com" style="color:#1a73e8;text-decoration:none;margin-left:8px;">hexra2025@gmail.com</a>
+        </p>
+        <p style="margin:0 0 12px;font-size:14px;">
+            <a href="https://www.instagram.com/hexra_?igsh=dGFqY2MzMjQ1aGJo" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">Instagram</a> |
+            <a href="https://github.com/haroontrailblazer" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">GitHub</a>
+        </p>
+        <hr style="border:none;border-top:1px solid #e6e6e6;margin:12px 0;">
+        <p style="margin:8px 0 0;color:#555;font-size:13px;line-height:1.4;text-align:left;">
+            <strong>About:</strong><br>
+            MomentoMonto is an intelligent server monitoring and response time analysis tool designed to track, analyze, and visualize the performance of web servers in real-time. It helps developers, system administrators, and network engineers ensure high availability, stability, and speed of their online services.
+        </p>
+    </div>
+    <br>
+    """, unsafe_allow_html=True)
