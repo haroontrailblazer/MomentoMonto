@@ -30,7 +30,7 @@ st.markdown("""
 # Title
 st.markdown("""
     <h2 style='text-align:left; color:#00FFFF; text-shadow:0 0 10px #00FFFF;'>MomentoMonto</h2>
-    <p style='text-align:left; color:grey; font-size:10px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
+    <p style='text-align:left; color:grey; font-size:11px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
 
 # --- Input Section ---
 url_req = st.text_input(label="URL", label_visibility="hidden", placeholder="Enter your Website-URL or IP-Address")
@@ -66,6 +66,7 @@ status_placeholder = st.empty()
 bar_placeholder = st.empty()
 response_placeholder = st.empty()
 chart_placeholder = st.empty()
+stat_placeholder = st.empty()
 
 # --- Setup Variables ---
 timeout = 10
@@ -170,5 +171,5 @@ while True:
     ax.set_yticklabels([f"{i}" for i in range(11)], fontsize=9, color="gray")
 
     chart_placeholder.pyplot(fig, clear_figure=True)
-
+    stat_placeholder.write(res.status_code)
     time.sleep(timeout)
