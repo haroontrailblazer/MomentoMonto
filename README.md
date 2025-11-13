@@ -49,12 +49,6 @@ The collected data is visualized with charts and response trends for intuitive p
 
 ---
 
-## Preview
-
-> *(Add screenshots or GIFs of your app interface here once available.)*
-
----
-
 ##  Contributing
 
 Contributions are always welcome!  
