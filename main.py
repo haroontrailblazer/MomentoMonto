@@ -51,7 +51,7 @@ if not url_req:
         <hr style="border:none;border-top:1px solid #e6e6e6;margin:12px 0;">
         <p style="margin:8px 0 0;color:#555;font-size:13px;line-height:1.4;text-align:left;">
             <strong>About:</strong><br>
-            StrengthX is a free, open-source password strength checker designed to help you create stronger passwords and enhance your online security Integrated with AI-Password Generator "StrengthX-Dildo:V1".
+           MomentoMonto is an intelligent server monitoring and response time analysis tool designed to track, analyze, and visualize the performance of web servers in real-time. It helps developers, system administrators, and network engineers ensure high availability, stability, and speed of their online services.
         </p>
     </div>
     <br>
