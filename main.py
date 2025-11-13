@@ -91,13 +91,13 @@ while True:
         if res.status_code == 200:
             color = "#00FFFF"
             text = "Server Active"
-        if response_time < 1000:
+        if response_time < 100:
           progress_value = 100
-        elif response_time < 2000:
+        elif response_time < 200:
           progress_value = 75
-        elif response_time < 3000:
+        elif response_time < 300:
           progress_value = 50
-        elif response_time >= 5000:
+        elif response_time >= 500:
           progress_value = 25
           
         else:
@@ -166,9 +166,9 @@ while True:
     else:
         ax.set_xticks([])
         
-    ax.set_ylim(0, 10)
-    ax.set_yticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    ax.set_yticklabels([f"{i}" for i in range(11)], fontsize=9, color="gray")
+    ax.set_ylim(0, 5)
+    ax.set_yticks([0, 1, 2, 3, 4, 5])
+    ax.set_yticklabels([f"{i}" for i in range(6)], fontsize=9, color="gray")
 
     chart_placeholder.pyplot(fig, clear_figure=True)
     stat_placeholder.write(res.status_code)
