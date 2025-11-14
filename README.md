@@ -7,6 +7,20 @@
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)](#)
 [![Maintained](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)](#)
 
+<div align="center">
+
+### ðŸ›¡ï¸ Created by Cisco Certified Data Analyst
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="4a77f00c-5326-4836-a5ba-c9a4bfbd9e34" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+[![Credly Badge](https://img.shields.io/badge/View%20on-Credly-orange?style=for-the-badge&logo=credly)](https://www.credly.com/badges/4a77f00c-5326-4836-a5ba-c9a4bfbd9e34/public_url)
+
+
+**Skills:**
+Cloud Backup Â· Cloud Computing Â· Cloud Security Â· Compliance Lifecycle Â· Cybersecurity Â· Cyber Threat Intelligence Â· Data Protection Â· Disaster Recovery Â· Google Cloud Â· Identity And Access Management (IAM) Â· Network Security Â· Threat Detection
+
+</div>
+
 ---
 
 ## Overview
