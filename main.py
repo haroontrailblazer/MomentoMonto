@@ -7,6 +7,14 @@ import time
 import re
 
 
+# Google verification
+if "googleverify" in st.query_params:
+    file_path = Path("googleee00d3585342fc79.html")
+    if file_path.exists():
+        st.write(file_path.read_text())
+        st.stop()
+
+
 # site mapping
 if "sitemap" in st.query_params:
     st.write(Path("sitemap.xml").read_text())
