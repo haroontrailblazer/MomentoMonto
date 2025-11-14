@@ -1,10 +1,23 @@
 from datetime import datetime
 import matplotlib.pyplot as mp
 import streamlit as st
+from pathlib import Path
 import requests
 import time
 import re
 
+
+# site mapping
+if "sitemap" in st.query_params:
+    st.write(Path("sitemap.xml").read_text())
+    st.stop()
+    
+# Robots.txt
+if "robots" in st.query_params:
+    st.write(Path("robots.txt").read_text())
+    st.stop()
+    
+    
 # --- Page Configuration ---
 st.set_page_config(
     page_title="MomentoMonto - Monitor your Servers",
@@ -58,23 +71,26 @@ if not url_req:
     """, unsafe_allow_html=True)
     st.stop()
 
+
+
 # URL or IP Input Filter for HTTPS
 if not re.match(r"https://", url_req):
     url_req = "https://" + url_req
 
-# --- Streamlit Placeholders ---
+
+
 status_placeholder = st.empty()
 bar_placeholder = st.empty()
 response_placeholder = st.empty()
 chart_placeholder = st.empty()
 stat_placeholder = st.empty()
-
-# --- Setup Variables ---
 timeout = 10
 response_times = []
 timestamps = []
 
-# --- Monitoring Loop ---
+
+
+# Monitoring Loop
 while True:
     try:
         start_time = time.time()
@@ -89,13 +105,17 @@ while True:
             response_times.pop(0)
             timestamps.pop(0)
         
+        # Active server state
         if res.status_code == 200:
             color = "#00FFFF"
             text = "Server Active"
+            
+        # Error server status
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
-          
+    
+    # server down status      
     except Exception:
         color = "#FF0000"
         text = "Server Down"
@@ -171,10 +191,10 @@ while True:
     ax.set_ylim(0, 5)
     ax.set_yticks([0, 1, 2, 3, 4, 5])
     ax.set_yticklabels([f"{i}" for i in range(6)], fontsize=9, color="gray")
-
     chart_placeholder.pyplot(fig, clear_figure=True)
     try:
         stat_placeholder.write(res.status_code)
     except:
         stat_placeholder.write("Code Error")
+          
     time.sleep(timeout)
