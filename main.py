@@ -1,28 +1,12 @@
 from datetime import datetime
 import matplotlib.pyplot as mp
 import streamlit as st
-from pathlib import Path
 import requests
 import time
 import re
 
 
-# Google verification
-if "googleee00d3585342fc79" in st.query_params:
-    st.write(Path("googleee00d3585342fc79.html").read_text())
-    st.stop()
 
-
-# site mapping
-if "sitemap" in st.query_params:
-    st.write(Path("sitemap.xml").read_text())
-    st.stop()
-    
-# Robots.txt
-if "robots" in st.query_params:
-    st.write(Path("robots.txt").read_text())
-    st.stop()
-    
     
 # --- Page Configuration ---
 st.set_page_config(
@@ -38,6 +22,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+
+
+
 # --- SEO META TAGS ---
 st.markdown("""
 <head>
@@ -47,15 +34,25 @@ st.markdown("""
   <meta name="robots" content="index, follow">
 </head>
 """, unsafe_allow_html=True)
+
+
+
 # Title
 st.markdown("""
     <h2 style='text-align:left; color:#00FFFF;'>MomentoMonto</h2>
     <p style='text-align:left; color:grey; font-size:14px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
 
+
+
+
 # --- Input Section ---
 url_req = st.text_input(label="URL", label_visibility="hidden", placeholder="Enter your Website-URL or IP-Address")
 if not url_req:
     st.info("**Privacy Notice:** We don’t store, track, or share any URLs or server data you enter. All checks happen securely on your device in real-time.")
+    
+    
+    
+    
     # --- Footer ---
     st.markdown("""
     <div class="footer" style="background-color:black;color:#333;padding:18px;border-radius:12px;max-width:820px;margin:20px auto;text-align:center;font-family:Segoe UI, Tahoma, sans-serif;">
@@ -79,9 +76,13 @@ if not url_req:
 
 
 
+
+
 # URL or IP Input Filter for HTTPS
 if not re.match(r"https://", url_req):
     url_req = "https://" + url_req
+
+
 
 
 
@@ -96,6 +97,8 @@ timestamps = []
 
 
 
+
+
 # Monitoring Loop
 while True:
     try:
@@ -107,9 +110,14 @@ while True:
         response_times.append(response_time)
         timestamps.append(datetime.now().strftime("%H:%M:%S"))
 
+
+
         if len(response_times) > 400:
             response_times.pop(0)
             timestamps.pop(0)
+        
+        
+        
         
         # Active server state
         if res.status_code == 200:
@@ -120,6 +128,9 @@ while True:
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
+    
+    
+    
     
     # server down status      
     except Exception:
@@ -164,12 +175,16 @@ while True:
 
 
 
+
+
     # --- Response Time Display ---
     response_placeholder.markdown(
         f"<p style='text-align:center;font-size:16px;color:gray;'>Response Time: <b>{response_time} ms</b></p>",
         unsafe_allow_html=True
     )
     st.markdown("<br></br>",unsafe_allow_html=True)
+    
+    
     
     
     
