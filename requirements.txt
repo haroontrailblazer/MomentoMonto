@@ -1,3 +1,4 @@
 streamlit
 matplotlib
+numpy
 requests
