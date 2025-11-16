@@ -130,7 +130,7 @@ while True:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
             audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
-            audio_html = f"""<audio src="{audio_url}" autoplay loop hidden></audio>"""
+            audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
             audio_stat.markdown(audio_html, unsafe_allow_html=True)
     
     
@@ -144,7 +144,7 @@ while True:
         response_times.append(0)
         timestamps.append(datetime.now().strftime("%H:%M:%S"))
         audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
-        audio_html = f"""<audio src="{audio_url}" autoplay loop hidden></audio>"""
+        audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
         audio_stat.markdown(audio_html, unsafe_allow_html=True)
         
         
