@@ -92,7 +92,7 @@ audio_stat = st.empty()
 response_placeholder = st.empty()
 chart_placeholder = st.empty()
 stat_placeholder = st.empty()
-timeout = 10
+timeout = 5
 response_times = []
 timestamps = []
 
@@ -104,7 +104,7 @@ timestamps = []
 while True:
     try:
         start_time = time.time()
-        res = requests.get(url=url_req, timeout=5)
+        res = requests.get(url=url_req)
         end_time = time.time()
 
         response_time = round((end_time - start_time) * 1000, 2)
@@ -113,7 +113,7 @@ while True:
 
 
 
-        if len(response_times) > 400:
+        if len(response_times) > 17280:
             response_times.pop(0)
             timestamps.pop(0)
         
@@ -146,6 +146,9 @@ while True:
         audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
         audio_html = f"""<audio src="{audio_url}" autoplay loop hidden></audio>"""
         audio_stat.markdown(audio_html, unsafe_allow_html=True)
+        
+        
+        
 
     # --- Status Light ---
     status_html = f"""
@@ -163,6 +166,7 @@ while True:
     </div>
     """
     status_placeholder.markdown(status_html, unsafe_allow_html=True)
+    
     
     
 
@@ -209,7 +213,7 @@ while True:
 
     if hour_labels:
         ax.set_xticks(hour_positions)
-        ax.set_xticklabels(hour_labels, rotation=30, ha="right", fontsize=8, color="grey")
+        ax.set_xticklabels(hour_labels, ha="right", fontsize=8, color="grey")
     else:
         ax.set_xticks([])
         
@@ -223,3 +227,4 @@ while True:
         stat_placeholder.write("Code Error")
           
     time.sleep(timeout)
+       
