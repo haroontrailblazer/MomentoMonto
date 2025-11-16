@@ -88,6 +88,7 @@ if not re.match(r"https://", url_req):
 
 status_placeholder = st.empty()
 bar_placeholder = st.empty()
+audio_stat = st.empty()
 response_placeholder = st.empty()
 chart_placeholder = st.empty()
 stat_placeholder = st.empty()
@@ -128,7 +129,9 @@ while True:
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
-    
+            audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
+            audio_html = f"""<audio src="{audio_url}" autoplay loop hidden></audio>"""
+            audio_stat.markdown(audio_html, unsafe_allow_html=True)
     
     
     
@@ -140,8 +143,9 @@ while True:
         response_time = 0
         response_times.append(0)
         timestamps.append(datetime.now().strftime("%H:%M:%S"))
-        
-        
+        audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
+        audio_html = f"""<audio src="{audio_url}" autoplay loop hidden></audio>"""
+        audio_stat.markdown(audio_html, unsafe_allow_html=True)
 
     # --- Status Light ---
     status_html = f"""
