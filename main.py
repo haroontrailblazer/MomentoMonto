@@ -61,7 +61,7 @@ if not url_req:
             <a href="mailto:hexra2025@gmail.com" style="color:#1a73e8;text-decoration:none;margin-left:8px;">hexra2025@gmail.com</a>
         </p>
         <p style="margin:0 0 12px;font-size:14px;">
-            <a href="https://www.instagram.com/hexra_?igsh=dGFqY2MzMjQ1aGJo" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">Instagram</a> |
+            <a href="" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">Instagram</a> |
             <a href="https://github.com/haroontrailblazer" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">GitHub</a>
         </p>
         <hr style="border:none;border-top:1px solid #e6e6e6;margin:12px 0;">
@@ -92,7 +92,6 @@ audio_stat = st.empty()
 response_placeholder = st.empty()
 chart_placeholder = st.empty()
 stat_placeholder = st.empty()
-timeout = 5
 response_times = []
 timestamps = []
 
@@ -104,7 +103,7 @@ timestamps = []
 while True:
     try:
         start_time = time.time()
-        res = requests.get(url=url_req)
+        res = requests.get(url=url_req,timeout=3)
         end_time = time.time()
 
         response_time = round((end_time - start_time) * 1000, 2)
@@ -113,7 +112,7 @@ while True:
 
 
 
-        if len(response_times) > 17280:
+        if len(response_times) > 86400:
             response_times.pop(0)
             timestamps.pop(0)
         
@@ -190,8 +189,6 @@ while True:
         f"<p style='text-align:center;font-size:16px;color:gray;'>Response Time: <b>{response_time} ms</b></p>",
         unsafe_allow_html=True
     )
-    st.markdown("<br></br>",unsafe_allow_html=True)
-    
     
     
     
@@ -201,7 +198,7 @@ while True:
     mp.style.use("dark_background")
     fig, ax = mp.subplots(figsize=(6, 3))
     mb_values = [round(rt * 0.01, 2) for rt in response_times]
-    ax.plot(timestamps, mb_values, color="#00FFFF", marker="o", linewidth=2)
+    ax.plot(timestamps, mb_values, color="#00FFFF", marker="o",markersize=1, linewidth=2)
     ax.set_xlabel("Time", fontsize=10, color="grey")
     ax.set_ylabel("Traffic(Sec)", fontsize=10, color="grey")
     ax.grid(alpha=0.3)
@@ -226,5 +223,3 @@ while True:
     except:
         stat_placeholder.write("Code Error")
           
-    time.sleep(timeout)
-       
