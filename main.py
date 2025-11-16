@@ -1,6 +1,7 @@
 from datetime import datetime
 import matplotlib.pyplot as mp
 import streamlit as st
+import numpy as np
 import requests
 import time
 import re
@@ -61,7 +62,7 @@ if not url_req:
             <a href="mailto:hexra2025@gmail.com" style="color:#1a73e8;text-decoration:none;margin-left:8px;">hexra2025@gmail.com</a>
         </p>
         <p style="margin:0 0 12px;font-size:14px;">
-            <a href="" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">Instagram</a> |
+            <a href="https://www.instagram.com/hendrix__trailblazer?igsh=MTEyOTEycm9mMGxjaA==" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">Instagram</a> |
             <a href="https://github.com/haroontrailblazer" target="_blank" style="color:#1a73e8;text-decoration:none;margin:0 8px;">GitHub</a>
         </p>
         <hr style="border:none;border-top:1px solid #e6e6e6;margin:12px 0;">
@@ -203,6 +204,11 @@ while True:
     ax.set_xlabel("Time", fontsize=10, color="grey")
     ax.set_ylabel("Traffic(Sec)", fontsize=10, color="grey")
     ax.grid(alpha=0.3)
+    avg_response = np.mean(response_times)
+    ax.text(0,4.6, f"Avg Response Time - {avg_response:.2f}s",color ='grey',fontsize=8)
+    max_response = np.max(response_times)
+    min_response = np.min(response_times)
+    ax.text(0,4.3,f"Max, Min - {max_response:.2f}s, {min_response:.2f}",color ='grey',fontsize=8)
     hour_labels, hour_positions = [], []
     for i, t in enumerate(timestamps):
         if t.endswith(":00:00"):
