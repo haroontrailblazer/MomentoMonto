@@ -196,7 +196,7 @@ while True:
     
     
     # --- Response Time Line Chart (X: Hourly labels, Y: 0–5 sec) ---
-    mp.close("all")
+    
     mp.style.use("dark_background")
     fig, ax = mp.subplots(figsize=(6, 3))
     mb_values = [round(rt * 0.01, 2) for rt in response_times]
