@@ -114,7 +114,7 @@ while True:
 
 
 
-        if len(response_times) > 400:
+        if len(response_times) > 288000:
             response_times.pop(0)
             timestamps.pop(0)
         
