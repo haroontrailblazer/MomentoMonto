@@ -229,3 +229,4 @@ while True:
         stat_placeholder.write(res.status_code)
     except:
         stat_placeholder.write("Code Error")
+    time.sleep(0.30)
