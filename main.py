@@ -9,7 +9,7 @@ import re
 
 
 
-#  Page Configuration
+# --- Page Configuration ---
 st.set_page_config(
     page_title="MomentoMonto - Monitor your Servers",
     page_icon="https://github.com/haroontrailblazer/haroontrailblazer/blob/main/Project%20Pngs/MomentoMonto-icon.png?raw=true",
@@ -26,7 +26,7 @@ st.markdown("""
 
 
 
-#   Meta Tags
+# --- SEO META TAGS ---
 st.markdown("""
 <head>
   <title>MomentoMonto - Monitor Your Servers</title>
@@ -39,7 +39,7 @@ st.markdown("""
 
 
 
-#   Title
+# --- Title ---
 st.markdown("""
     <h2 style='text-align:left; color:#00FFFF;'>MomentoMonto</h2>
     <p style='text-align:left; color:grey; font-size:14px; margin-top:-10px;'>Check your server health and analyze live response time</p>""", unsafe_allow_html=True)
@@ -47,7 +47,7 @@ st.markdown("""
 
 
 
-# URL Input
+# --- Input Section ---
 url_req = st.text_input(label="URL", label_visibility="hidden", placeholder="Enter your Website-URL or IP-Address")
 if not url_req:
     st.info("**Privacy Notice:** We don’t store, track, or share any URLs or server data you enter. All checks happen securely on your device in real-time.")
@@ -74,17 +74,17 @@ if not url_req:
     
     
     
-# URL filtering
+# --- URL or IP Input Filter for HTTPS ---
 if not re.match(r"https://", url_req):
     url_req = "https://" + url_req
+    
+    
+    
 
-
-
-
-# Placeholders & Variables
-status_placeholder = st.empty()
+# --- Variables & Placeholders ---
 bar_placeholder = st.empty()
 response_placeholder = st.empty()
+status_placeholder = st.empty()
 audio_stat = st.empty()
 chart_placeholder = st.empty()
 stat_placeholder = st.empty()
@@ -94,70 +94,65 @@ timestamps = []
 
 
 
-# Monitoring
+# Monitoring Loop
 while True:
+    
     try:
+        
+        # --- Server Request ---
+        start_time = time.time()
+        res = requests.get(url=url_req,timeout=3)
+        end_time = time.time()
+        
+        
         # Limit data points to last 288,000 (24 hours at 0.3s intervals)
         if len(response_times) > 288000:
             response_times.pop(0)
             timestamps.pop(0)
+
         
-        
-        
-        
-        # Measure response time
-        start_time = time.time()
-        res = requests.get(url=url_req,timeout=3)
-        end_time = time.time()
-        response_time = round((end_time - start_time) * 1000, 2)
-        response_times.append(response_time)
-        timestamps.append(datetime.now().strftime("%H:%M:%S"))
-        
-        
-        
-        
-        # Determine status of server
+        # Active server state
         if res.status_code == 200:
             color = "#00FFFF"
             text = "Server Active"
+            response_time = round((end_time - start_time) * 1000, 2)
+            response_times.append(response_time)
+            timestamps.append(datetime.now().strftime("%H:%M:%S"))
+            
+            
+        # Error server status
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
-            progress_value = 0
-            response_times.append(0)
             audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
             audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
             audio_stat.markdown(audio_html, unsafe_allow_html=True)
-            
-            
-            
-                   
-    # Handle exceptions (e.g., server down, timeout)
+            response_time = 0
+            response_times.append(0)
+            timestamps.append(datetime.now().strftime("%H:%M:%S"))
+    
+    
+    # server down status      
     except Exception:
         color = "#FF0000"
         text = "Server Down"
-        progress_value = 0
-        response_time = 0
-        response_times.append(0)
-        timestamps.append(datetime.now().strftime("%H:%M:%S"))
         audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
         audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
         audio_stat.markdown(audio_html, unsafe_allow_html=True)
-        
-        
-        
-        
-    # Determine color if not Under a scope of exception 
-    if color is None:
+        response_time = 0
+        response_times.append(0)
+        timestamps.append(datetime.now().strftime("%H:%M:%S"))
+
+
+    #--- Default Color Assignment --- 
+    if not color:
         if res.status_code == 200:
             color = "#00FFFF"
         else:
-            color = "#FF0000"
-    
-    
-    
-    
-    # Update Status Display on UI    
+            color = "#FF0000" 
+        
+
+    # --- Status Light ---
     status_html = f"""
     <div style='text-align:center;'>
         <div style='
@@ -175,10 +170,10 @@ while True:
     status_placeholder.markdown(status_html, unsafe_allow_html=True)
     
     
-    
-    
-    # Update Progress Bar
-    if response_time < 100:
+    # --- Progress Bar ---
+    if response_time == 0:
+        progress_value = 0
+    elif response_time < 100:
         progress_value = 100
     elif response_time < 200:
         progress_value = 75
@@ -189,30 +184,33 @@ while True:
     bar_placeholder.progress(progress_value)
 
 
-
-
-    # Response Time Display
+    # --- Response Time Display ---
     response_placeholder.markdown(f"<p style='text-align:center;font-size:16px;color:gray;'>Response Time: <b>{response_time} ms</b></p>",unsafe_allow_html=True)
     
     
-    
-    
-    # Plotting the Response Time Chart
+    # --- Response Time Line Chart (X: Hourly labels, Y: 0–5 sec) ---
     mp.style.use("dark_background")
     fig, ax = mp.subplots(figsize=(6, 3))
     mb_values = [round(rt * 0.01, 2) for rt in response_times]
-    ax.plot(timestamps, mb_values, color="#00FFFF", marker="o",markersize=1, linewidth=2)
+    ax.plot(timestamps, mb_values, color="#00FFFF", marker="o",markersize=3.2, linewidth=2)
     ax.set_xlabel("Time", fontsize=10, color="grey")
     ax.set_ylabel("Traffic(Sec)", fontsize=10, color="grey")
     ax.grid(alpha=0.3)
+    
+    
+    # Response Time Statistics
     avg_response = np.mean(response_times)
-    ax.text(0,4.6, f"Avg Response Time - {avg_response:.2f}s",color ='grey',fontsize=8)
     max_response = np.max(response_times)
     min_response = np.min(response_times)
-    ax.text(0,4.3,f"Max, Min - {max_response:.2f}s, {min_response:.2f}",color ='grey',fontsize=8)
-    
-    
-    # Adjusting x-axis labels
+    if progress_value != 0:
+        ax.text(0,4.6, f"Avg Response Time - {avg_response:.2f}s",color ='grey',fontsize=8)
+        ax.text(0,4.3,f"Max, Min - {max_response:.2f}s, {min_response:.2f}",color ='grey',fontsize=8)
+    else:
+        ax.text(0,4.6, f"Avg Response Time - N/A",color ='grey',fontsize=8)
+        ax.text(0,4.3,f"Max, Min - N/A, N/A",color ='grey',fontsize=8)
+        
+        
+    # X-axis Adjustments
     hour_labels, hour_positions = [], []
     for i, t in enumerate(timestamps):
         if t.endswith(":00:00"):
@@ -224,21 +222,19 @@ while True:
         ax.set_xticklabels(hour_labels, ha="right", fontsize=8, color="grey")
     else:
         ax.set_xticks([])
-    
-    
-    # Adjusting y-axis labels
+        
+        
+    # Y-axis Adjustments
     ax.set_ylim(0, 5)
     ax.set_yticks([0, 1, 2, 3, 4, 5])
     ax.set_yticklabels([f"{i}" for i in range(6)], fontsize=9, color="gray")
     chart_placeholder.pyplot(fig, clear_figure=True)
     
     
-    # HTTP Status Code Display
+    # --- Status Code Display ---
     try:
         stat_placeholder.write(res.status_code)
     except:
         stat_placeholder.write("Code Error")
-    
-    
-    # Delay before next check
-    time.sleep(0.3)
+        
+    time.sleep(0.5)
