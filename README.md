@@ -17,7 +17,7 @@ A Realtime Server Monitoring System with Analysis of Response Time Insights whic
 [![Maintained](https://img.shields.io/badge/Maintained-Yes-brightgreen.svg)](#)
 
 
-### Created by Cisco Certified Data Analyst
+### 🛡️ Created by Cisco Certified Data Analyst
 
 <img width="145" height="145" alt="data-analytics-essentials" src="https://github.com/user-attachments/assets/69ebc3cf-c504-47c4-bc85-5dfd574015be" />
 
