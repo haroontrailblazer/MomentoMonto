@@ -1,5 +1,13 @@
 
 # MomentoMonto - Server Monitor & Live Response Time Analyzer
+A Realtime Server Monitoring System with Analysis of Response Time Insights which Reduces the Overwhelming CMD Interface for Devs to Monitor their Server in Realtime while Deploying or in their  Test Instances
+<p align="center">
+  <img width="141" height="101" alt="1000152142-removebg-preview" src="https://github.com/user-attachments/assets/1ad18db8-8d86-43c2-8ba1-c7876bb7cc8d" /><br>
+  <img width="550" height="250" alt="image" src="https://github.com/user-attachments/assets/4f0e0861-83ba-4a61-b4b4-ddedf8d356ac" />
+</p>
+
+---
+<br>
 <div align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.13.8-blue.svg)](https://www.python.org/)
@@ -21,6 +29,7 @@
 Dashboard, Data Analysis, Data Storytelling, Data Visualization, Excel, SQL, Tableau
 
 </div>
+<br>
 
 ---
 
@@ -75,8 +84,7 @@ If you'd like to enhance **MomentoMonto** (for example, by adding **log exports*
 ---
 
 ## Author
-**haroontrailblazer**  
-AI Developer | Data Analyst | Machine Learning Engineer  
+**haroontrailblazer**   
 
 🔗 **GitHub:** [haroontrailblazer](https://github.com/haroontrailblazer)
 
@@ -84,18 +92,4 @@ AI Developer | Data Analyst | Machine Learning Engineer
 
 ## License
 
-This project is licensed under the **Apache License 2.0**.  
-You may obtain a copy of the License at:  
-[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
----
-
-## Installation & Setup
-
-```bash
-git clone https://github.com/haroontrailblazer/MomentoMonto.git
-cd MomentoMonto
-
-pip install -r requirements.txt
-
-streamlit run main.py
+This project is licensed under the **Apache License 2.0**
