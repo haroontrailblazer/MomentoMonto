@@ -45,8 +45,6 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Test with pytest
-        env:
-          OLLAMA_API_URL: ${{ env.OLLAMA_API_URL }}
         run: |
           echo " Running tests with pytest..."
           pytest || echo "No tests found or tests failed, skipping gracefully."
