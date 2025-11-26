@@ -19,10 +19,9 @@ A Realtime Server Monitoring System with Analysis of Response Time Insights whic
 
 ### 🛡️ Created by Cisco Certified Data Analyst
 
-<img width="145" height="145" alt="data-analytics-essentials" src="https://github.com/user-attachments/assets/69ebc3cf-c504-47c4-bc85-5dfd574015be" />
+<img width="145" height="145" alt="data-analytics-essentials" src="https://github.com/user-attachments/assets/69ebc3cf-c504-47c4-bc85-5dfd574015be" /><br>
 
-
-[![Credly Badge](https://img.shields.io/badge/View%20on-Credly-orange?style=for-the-badge&logo=credly)](https://www.credly.com/badges/4a77f00c-5326-4836-a5ba-c9a4bfbd9e34/public_url)
+[![Credly Badge](https://img.shields.io/badge/View%20on-Credly-orange?style=flat&logo=credly)](https://www.credly.com/users/haroon-k-m)
 
 
 **Skills**<br>
