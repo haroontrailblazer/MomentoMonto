@@ -149,8 +149,13 @@ while True:
         if res.status_code == 200:
             color = "#00FFFF"
         else:
-            color = "#FF0000" 
-        
+            color = "#FF0000"
+            
+            
+    #--- Response Time Assignment ---  
+    if not response_time:
+        response_time = 0
+    
 
     # --- Status Light ---
     status_html = f"""
