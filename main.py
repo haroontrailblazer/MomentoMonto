@@ -12,7 +12,7 @@ import re
 # --- Page Configuration ---
 st.set_page_config(
     page_title="MomentoMonto - Monitor your Servers",
-    page_icon="https://github.com/haroontrailblazer/haroontrailblazer/blob/main/Project%20Pngs/MomentoMonto-icon.png?raw=true",
+    page_icon="https://github.com/haroontrailblazer/MomentoMonto/blob/main/MomentoMonto-icon.png?raw=true",
     layout="centered"
 )
 st.markdown("""
