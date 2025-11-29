@@ -124,7 +124,7 @@ while True:
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
-            audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
+            audio_url = "https://github.com/haroontrailblazer/MomentoMonto/blob/main/error.mp3"
             audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
             audio_stat.markdown(audio_html, unsafe_allow_html=True)
             response_time = 0
@@ -136,7 +136,7 @@ while True:
     except Exception:
         color = "#FF0000"
         text = "Server Down"
-        audio_url = "https://raw.githubusercontent.com/haroontrailblazer/haroontrailblazer/main/Project%20Pngs/error.mp3"
+        audio_url = "https://github.com/haroontrailblazer/MomentoMonto/blob/main/error.mp3"
         audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
         audio_stat.markdown(audio_html, unsafe_allow_html=True)
         response_time = 0
