@@ -124,7 +124,7 @@ while True:
         else:
             color = "#FF0000"
             text = f"Server Error ({res.status_code})"
-            audio_url = "https://github.com/haroontrailblazer/MomentoMonto/blob/main/error.mp3"
+            audio_url = "https://github.com/haroontrailblazer/MomentoMonto/blob/main/error.mp3?raw=true"
             audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
             audio_stat.markdown(audio_html, unsafe_allow_html=True)
             response_time = 0
@@ -136,7 +136,7 @@ while True:
     except Exception:
         color = "#FF0000"
         text = "Server Down"
-        audio_url = "https://github.com/haroontrailblazer/MomentoMonto/blob/main/error.mp3"
+        audio_url = "https://github.com/haroontrailblazer/MomentoMonto/blob/main/error.mp3?raw=true"
         audio_html = f"""<audio src="{audio_url}" autoplay hidden></audio>"""
         audio_stat.markdown(audio_html, unsafe_allow_html=True)
         response_time = 0
@@ -186,6 +186,8 @@ while True:
         progress_value = 50
     elif response_time >= 500:
         progress_value = 25
+    
+    # Update Progress Bar
     bar_placeholder.progress(progress_value)
 
 
