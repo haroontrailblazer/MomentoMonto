@@ -236,7 +236,7 @@ while True:
     ax.set_yticks([0, 1, 2, 3, 4, 5])
     ax.set_yticklabels([f"{i}" for i in range(6)], fontsize=9, color="gray")
     chart_placeholder.pyplot(fig, clear_figure=True)
-    mp.close(fig)
+    mp.close()
     
     
     # --- Status Code Display ---
