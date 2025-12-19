@@ -90,6 +90,7 @@ chart_placeholder = st.empty()
 stat_placeholder = st.empty()
 response_times = []
 timestamps = []
+progress_value = st.empty()
 
 
 
