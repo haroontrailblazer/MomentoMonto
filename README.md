@@ -1,7 +1,7 @@
 
 # MomentoMonto - Server Monitor & Live Response Time Analyzer
-![Image 2025-12-22 at 10 50 59 PM](https://github.com/user-attachments/assets/f410146c-e66d-4e19-80f8-3b2e71aa5b7d)
 
+https://github.com/user-attachments/assets/e266aaf4-7367-4209-afe8-01af7978efb3
 
 A Realtime Server Monitoring System with Analysis of Response Time Insights which Reduces the Overwhelming CMD Interface for Devs to Monitor their Server in Realtime while Deploying or in their  Test Instances
 <p align="center">
